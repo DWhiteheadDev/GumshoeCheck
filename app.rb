@@ -6,11 +6,10 @@ require 'net/http'
 set :port, 3000
 
 post '/webhook' do
-    #get the payload
-    request.body.rewind
+    # get the payload
     request.body = request.body.read
     payload = JSON.parse(request.body)
-    #get event type
+    # get event type
     event_type = request.env['HTTP_X_GITHUB_EVENT']
 
     # depending on the event type, do something
@@ -28,7 +27,9 @@ post '/webhook' do
 end
 
 def handle_pull_request(payload)
+    logger.info "Pull request event received"
 end
 
 def handle_issue(payload)
+    logger.info "Issue event received"
 end
