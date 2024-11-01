@@ -7,8 +7,8 @@ set :port, 3000
 
 post '/webhook' do
     # get the payload
-    request.body = request.body.read
-    payload = JSON.parse(request.body)
+    request_body = request.body.read
+    payload = JSON.parse(request_body)
     # get event type
     event_type = request.env['HTTP_X_GITHUB_EVENT']
 
